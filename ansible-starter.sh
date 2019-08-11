@@ -1,9 +1,10 @@
 #!/bin/bash
 
-while getopts 'r:' input
+while getopts 'r:c:' input
 do
     case $input in
     r) roles=$OPTARG;;
+    c) config=$OPTARG;;
     esac
 done
 
@@ -27,12 +28,29 @@ processRoles () {
     done
 }
 
-start () {
-    createBaseStructure
-    if [ ! -z "$1" ]
-    then
-        processRoles "$1"
-    fi
+errorMessage(){
+    echo "The script returned a error message: $1"
 }
 
-start "$roles"
+start () {
+
+    if [ ! -z "$1" ] && [ ! -z "$2" ] 
+    then
+        errorMessage "Two Arguments"
+    fi
+
+    if [ ! -z "$1" ] && [ -z "$2" ] || [ -z "$1" ] && [ -z "$2" ]
+    then
+        createBaseStructure
+        processRoles "$1"
+    fi
+
+    if [ ! -z "$2" ] && [ -z "$1" ]
+    then
+        readConfig
+    fi
+
+    createBaseStructure
+}
+
+start "$roles" "$config"
