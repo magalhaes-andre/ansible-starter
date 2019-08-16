@@ -2,6 +2,10 @@
 
 Still under development, needs improvements.
 
+### Creating The Command:
+
+Just execute the 'create-command.sh' script, and it will copy and chmod ansible-starter into your /usr/local/bin/ directory so you can execute the command anywhere on your machine.
+
 ### For usage:
 
 - ./ansible-starter.sh => creates a basic directory structure:
