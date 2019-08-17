@@ -4,7 +4,7 @@ Still under development, needs improvements.
 
 ### Creating The Command:
 
-Just execute the 'create-command.sh' script, and it will copy and chmod ansible-starter into your /usr/local/bin/ directory so you can execute the command anywhere on your machine.
+Just execute 'bash ansible-starter.sh install', the ansible-starter will be deployed at your /usr/local/bin/ and you'll be able to call it anywhere.
 
 ### For usage:
 

@@ -32,6 +32,12 @@ errorMessage(){
     echo "The script returned a error message: $1"
 }
 
+installCommand(){
+    sudo cp ansible-starter.sh /usr/local/bin/
+    sudo mv /usr/local/bin/ansible-starter.sh /usr/local/bin/ansible-starter 
+    sudo chmod +x /usr/local/bin/ansible-starter
+}
+
 start () {
 
     if [ ! -z "$1" ] && [ ! -z "$2" ] 
@@ -53,4 +59,10 @@ start () {
     createBaseStructure
 }
 
-start "$roles" "$config"
+if [ ! -z "$1" ]
+then
+    installCommand
+else
+    start "$roles" "$config"
+fi
+
